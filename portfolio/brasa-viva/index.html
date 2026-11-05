@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brasa Viva | Pizzaria de forno a lenha</title>
+<meta name="description" content="Pizzaria de forno a lenha com cardápio completo e pedido pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+:root{--sun:#ffd23f;--ink:#1b1208;--fire:#e63b2e;--leaf:#1f6b4a;--paper:#fff7dc;--display:'Bowlby One','Arial Black',Impact,sans-serif;--body:'DM Sans',system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--sun);color:var(--ink);font:16px/1.55 var(--body);padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:inherit}
+nav{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 0;flex-wrap:wrap}
+.logo{font:400 1.7rem/1 var(--display);letter-spacing:.02em}
+.logo span{color:var(--fire)}
+.pill{display:inline-block;background:var(--ink);color:var(--sun);font:700 .92rem/1 var(--body);text-decoration:none;padding:14px 22px;border-radius:999px;border:3px solid var(--ink);transition:transform .15s}
+.pill:hover,.pill:focus-visible{transform:translateY(-2px) rotate(-1deg);outline:none}
+.pill.red{background:var(--fire);color:#fff;border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;padding:32px 0 56px}
+h1{font:400 clamp(2.8rem,9vw,6.4rem)/.95 var(--display);margin:0 0 18px;text-wrap:balance}
+h1 u{text-decoration:none;color:var(--fire);display:inline-block;transform:rotate(-2deg)}
+.lead{font-size:1.15rem;max-width:44ch;margin:0 0 26px}
+.actions{display:flex;gap:14px;flex-wrap:wrap}
+.oven{background:var(--ink);color:var(--sun);border-radius:28px;padding:26px;transform:rotate(2deg);box-shadow:8px 8px 0 var(--fire)}
+.oven small{font:700 .72rem/1 var(--body);letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.oven .big{font:400 4.8rem/1 var(--display);margin:6px 0 0}
+.oven .big sup{font-size:1.6rem;vertical-align:top;position:relative;top:.3em}
+.oven ul{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:2px dashed #ffd23f55;display:grid;gap:6px;font-size:.95rem}
+.oven li{display:flex;justify-content:space-between;gap:10px}
+.oven li b{color:#fff}
+.band{background:var(--ink);color:var(--sun);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));overflow:hidden;white-space:nowrap;padding:12px 0;font:400 1.15rem/1 var(--display);letter-spacing:.04em}
+.band span{display:inline-block;padding-right:2rem}
+@media(prefers-reduced-motion:no-preference){.band .t{display:inline-block;animation:s 26s linear infinite}@keyframes s{to{transform:translateX(-50%)}}}
+section{padding:56px 0}
+h2{font:400 clamp(2rem,6vw,3.4rem)/1 var(--display);margin:0 0 22px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.tab{font:700 .95rem/1 var(--body);background:transparent;color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:12px 20px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--sun)}
+.tab:focus-visible{outline:3px solid var(--fire);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.item{background:var(--paper);border:3px solid var(--ink);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;box-shadow:5px 5px 0 var(--ink);min-width:0}
+.item .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.item h3{margin:0;font:400 1.25rem/1.15 var(--display)}
+.price{font:400 1.25rem/1 var(--display);color:var(--fire);white-space:nowrap}
+.item p{margin:0;font-size:.92rem}
+.tag{align-self:flex-start;background:var(--leaf);color:#fff;font:700 .7rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:999px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.step{background:var(--leaf);color:#fff;border-radius:20px;padding:22px}
+.step b{font:400 1.2rem/1.2 var(--display);display:block;margin-bottom:6px}
+.step p{margin:0;font-size:.95rem}
+.order{background:var(--fire);color:#fff;border:3px solid var(--ink);border-radius:28px;padding:32px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;box-shadow:8px 8px 0 var(--ink)}
+.order h2{margin:0;color:#fff}
+.order p{margin:8px 0 0;max-width:40ch}
+.order .pill{background:var(--sun);color:var(--ink)}
+footer{padding:28px 0 36px;font-size:.88rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.oven{transform:rotate(1deg)}}
+.nodo-bar{display:flex;justify-content:space-between;align-items:center;gap:6px 16px;flex-wrap:wrap;background:#0b0e13;color:#8b95a5;font:500 13px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)))}
+.nodo-bar a{color:#ffb454;text-decoration:none;font-weight:600}
+.nodo-bar a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="nodo-bar"><a href="../../#portfolio">&larr; Voltar ao portfólio</a><span>Projeto de demonstração · Site por <a href="../../">Nodo</a></span></div>
+
+<div class="wrap">
+  <nav>
+    <div class="logo">Brasa<span>Viva</span></div>
+    <a class="pill" href="https://wa.me/5511900000000" target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+  </nav>
+  <header class="hero">
+    <div>
+      <h1>Pizza de forno a <u>lenha.</u></h1>
+      <p class="lead">Massa com 72 horas de fermentação, molho de tomate italiano e borda que estala. Pronta em 90 segundos de fogo, na sua mesa ou na sua porta.</p>
+      <div class="actions">
+        <a class="pill red" href="#cardapio">Ver cardápio</a>
+        <a class="pill" href="https://wa.me/5511900000000" target="_blank" rel="noopener">Fazer pedido</a>
+      </div>
+    </div>
+    <aside class="oven" aria-label="Dados do forno">
+      <small>Forno a lenha</small>
+      <div class="big">485<sup>°C</sup></div>
+      <ul>
+        <li><span>Tempo de forno</span><b>90 segundos</b></li>
+        <li><span>Fermentação da massa</span><b>72 horas</b></li>
+        <li><span>Lenha</span><b>Eucalipto seco</b></li>
+      </ul>
+    </aside>
+  </header>
+</div>
+<div class="band" aria-hidden="true"><div class="t"><span>FORNO ACESO ★ ENTREGA GRÁTIS ACIMA DE R$ 80 ★ PIZZA DO DIA ★ RODÍZIO ÀS QUINTAS ★</span><span>FORNO ACESO ★ ENTREGA GRÁTIS ACIMA DE R$ 80 ★ PIZZA DO DIA ★ RODÍZIO ÀS QUINTAS ★</span></div></div>
+
+<div class="wrap">
+  <section id="cardapio">
+    <h2>Cardápio</h2>
+    <div class="tabs" role="tablist" aria-label="Categorias do cardápio">
+      <button class="tab" role="tab" id="t-pizzas" aria-selected="true" data-cat="pizzas">Pizzas</button>
+      <button class="tab" role="tab" id="t-doces" aria-selected="false" data-cat="doces">Doces</button>
+      <button class="tab" role="tab" id="t-bebidas" aria-selected="false" data-cat="bebidas">Bebidas</button>
+    </div>
+    <div class="grid" id="grid" role="tabpanel"></div>
+  </section>
+
+  <section>
+    <h2>Como pedir</h2>
+    <div class="steps">
+      <div class="step"><b>Escolha</b><p>Veja o cardápio e decida o sabor. Meia a meia sem custo extra.</p></div>
+      <div class="step"><b>Chame no WhatsApp</b><p>Mande o pedido e o endereço. Respondemos em minutos.</p></div>
+      <div class="step"><b>Receba quentinha</b><p>Entrega em até 45 minutos na região central.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="order">
+      <div><h2>Bateu a fome?</h2><p>Pedidos de terça a domingo, das 18h às 23h30.</p></div>
+      <a class="pill" href="https://wa.me/5511900000000" target="_blank" rel="noopener">Pedir agora</a>
+    </div>
+  </section>
+  <footer><span>© Brasa Viva Pizzaria</span><span>Site de exemplo para portfólio</span></footer>
+</div>
+
+<script>
+(function(){
+  var data={
+    pizzas:[
+      ['Marguerita','Molho de tomate, muçarela de búfala, manjericão fresco e azeite.','R$ 54','Clássica'],
+      ['Calabresa Acebolada','Calabresa artesanal, cebola roxa, muçarela e orégano.','R$ 52',''],
+      ['Quatro Queijos','Muçarela, gorgonzola, parmesão e catupiry original.','R$ 62',''],
+      ['Brasa Viva','Linguiça defumada, pimenta biquinho, cebola caramelizada e rúcula.','R$ 66','Da casa'],
+      ['Portuguesa','Presunto, ovo, cebola, ervilha, azeitona e muçarela.','R$ 56',''],
+      ['Vegetariana','Abobrinha grelhada, cogumelos, tomate seco e pesto.','R$ 58','Sem carne']
+    ],
+    doces:[
+      ['Chocolate com Morango','Chocolate belga derretido e morangos frescos.','R$ 48',''],
+      ['Banana com Canela','Banana caramelizada, canela e leite condensado.','R$ 44',''],
+      ['Romeu e Julieta','Goiabada cremosa e queijo minas na brasa.','R$ 46','Mais pedida']
+    ],
+    bebidas:[
+      ['Refrigerante lata','Coca-Cola, Guaraná ou Sprite. 350 ml.','R$ 7',''],
+      ['Suco natural','Laranja, limão ou maracujá. 400 ml.','R$ 10',''],
+      ['Cerveja long neck','Pilsen gelada. 330 ml.','R$ 12',''],
+      ['Guaraná 2 litros','Para dividir com a família.','R$ 14','']
+    ]
+  };
+  var grid=document.getElementById('grid');
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function render(cat){
+    grid.setAttribute('aria-labelledby','t-'+cat);
+    grid.innerHTML=data[cat].map(function(i){
+      return '<article class="item"><div class="top"><h3>'+esc(i[0])+'</h3><span class="price">'+esc(i[2])+'</span></div><p>'+esc(i[1])+'</p>'+(i[3]?'<span class="tag">'+esc(i[3])+'</span>':'')+'</article>';
+    }).join('');
+  }
+  var tabs=document.querySelectorAll('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.setAttribute('aria-selected',x===t?'true':'false')});
+      render(t.getAttribute('data-cat'));
+    });
+  });
+  render('pizzas');
+})();
+</script>
+</body>
+</html>
