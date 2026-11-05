@@ -68,17 +68,69 @@ input:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:760px){.hero,.tool{grid-template-columns:1fr}.hero{gap:32px}.portrait{max-width:340px}.tool{padding:22px}}
 .nodo-bar{display:flex;justify-content:space-between;align-items:center;gap:6px 16px;flex-wrap:wrap;background:#0b0e13;color:#8b95a5;font:500 13px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)))}
-.nodo-bar a{color:#ffb454;text-decoration:none;font-weight:600}
+.nodo-bar a{color:#5b9cff;text-decoration:none;font-weight:600}
 .nodo-bar a:hover{text-decoration:underline}
+
+/* botão de WhatsApp vivo */
+.wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:#06260f;font:800 .98rem/1 var(--body);text-decoration:none;padding:16px 26px;border-radius:999px;border:0;box-shadow:0 5px 0 #159a47,0 14px 24px -10px rgba(37,211,102,.8);transition:transform .15s,box-shadow .15s;position:relative}
+.wa svg{width:22px;height:22px;flex:none}
+.wa:hover,.wa:focus-visible{transform:translateY(-2px);box-shadow:0 7px 0 #159a47,0 18px 28px -10px rgba(37,211,102,.9);outline:none}
+.wa:active{transform:translateY(4px);box-shadow:0 1px 0 #159a47}
+.wa.sm{padding:13px 20px;font-size:.92rem}
+.wa.sm svg{width:18px;height:18px}
+.wa.big{font-size:1.05rem;padding:18px 30px}
+@media(prefers-reduced-motion:no-preference){.wa.pulse{animation:ring 2.4s infinite}@keyframes ring{0%{box-shadow:0 5px 0 #159a47,0 0 0 0 rgba(37,211,102,.7)}70%,100%{box-shadow:0 5px 0 #159a47,0 0 0 16px rgba(37,211,102,0)}}}
+.plan .wa{margin-top:auto}
+/* frutinhas fofas */
+.fruits{display:flex;flex-wrap:wrap;gap:6px 14px;margin:-12px 0 28px;align-items:flex-end}
+.fr{width:68px;height:68px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fr svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 4px 3px rgba(0,0,0,.12))}
+.fr .b{transform-box:fill-box;transform-origin:50% 100%}
+.eyes{transform-box:fill-box;transform-origin:center}
+@media(prefers-reduced-motion:no-preference){
+  .fr .b{animation:bob 3.2s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .fr:hover .b,.fr:active .b{animation:hop .55s ease-out}
+  .eyes{animation:blink 4.5s infinite;animation-delay:var(--d,0s)}
+  .tw{transform-box:fill-box;transform-origin:center;animation:tw 2.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .fl .b{animation:bob 3.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+@keyframes hop{0%{transform:translateY(0) scale(1,1)}25%{transform:translateY(0) scale(1.12,.86)}55%{transform:translateY(-18px) scale(.94,1.1) rotate(-6deg)}100%{transform:translateY(0) scale(1,1)}}
+@keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}
+@keyframes tw{0%,100%{transform:scale(.7);opacity:.5}50%{transform:scale(1.15);opacity:1}}
+.mascot{position:absolute;right:14px;top:12px;width:58px;height:58px}
+.steps li,.plan{position:relative}
+.steps li h3,.plan h3{padding-right:56px}
+.portrait svg.hero-art{width:88%;height:auto;margin-bottom:84px}
+@media(max-width:760px){.fr{width:56px;height:56px}.actions .wa{width:100%}}
+
+.fr{background:var(--c,#fff3);border-radius:50%;padding:7px}
+.fr.mascot{padding:6px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<radialGradient id="g-mo" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ff8f9e"/><stop offset="1" stop-color="#e8334f"/></radialGradient>
+<radialGradient id="g-lj" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ffc766"/><stop offset="1" stop-color="#f58a12"/></radialGradient>
+<radialGradient id="g-av" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#8fd36c"/><stop offset="1" stop-color="#3f9a3a"/></radialGradient>
+<radialGradient id="g-pit" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#d28f62"/><stop offset="1" stop-color="#8a4a28"/></radialGradient>
+<radialGradient id="g-ma" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ff948a"/><stop offset="1" stop-color="#e03a3a"/></radialGradient>
+<radialGradient id="g-mi" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#97a2ff"/><stop offset="1" stop-color="#4b57d6"/></radialGradient>
+<radialGradient id="g-me" cx=".4" cy=".3" r="1"><stop offset="0" stop-color="#ff8c9c"/><stop offset="1" stop-color="#ef3f5c"/></radialGradient>
+<radialGradient id="g-ab" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ffdf6a"/><stop offset="1" stop-color="#f2a31a"/></radialGradient>
+<radialGradient id="g-ch" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ff7487"/><stop offset="1" stop-color="#c41f3a"/></radialGradient>
+<radialGradient id="g-li" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#fff395"/><stop offset="1" stop-color="#f4c61a"/></radialGradient>
+<radialGradient id="g-ba" cx=".3" cy=".25" r="1"><stop offset="0" stop-color="#fff0a0"/><stop offset="1" stop-color="#ffd23f"/></radialGradient>
+<linearGradient id="g-lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86e293"/><stop offset="1" stop-color="#2fa84f"/></linearGradient>
+<clipPath id="c-ab"><ellipse cx="50" cy="64" rx="25" ry="29"/></clipPath>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5-.1.2-.2.3-.4.5l-.3.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></symbol></svg>
 <div class="nodo-bar"><a href="../../#portfolio">&larr; Voltar ao portfólio</a><span>Projeto de demonstração · Site por <a href="../../">Nodo</a></span></div>
 
 <div class="wrap">
   <nav>
     <div class="logo">Helena Prado<small>Nutricionista · CRN-3 00000</small></div>
-    <a class="btn" href="https://wa.me/5511947861810" target="_blank" rel="noopener">Agendar consulta</a>
+    <a class="wa sm" data-wa data-msg="Olá! Quero agendar uma consulta." href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar consulta</a>
   </nav>
 
   <header class="hero">
@@ -87,20 +139,12 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
       <h1>Comer bem sem <span>sofrimento</span> e sem dieta maluca.</h1>
       <p class="lead">Um plano alimentar feito para a sua rotina, o seu orçamento e o seu gosto. Acompanhamento de perto, sem promessas milagrosas.</p>
       <div class="actions">
-        <a class="btn" href="https://wa.me/5511947861810" target="_blank" rel="noopener">Marcar primeira consulta</a>
+        <a class="wa big pulse" data-wa data-msg="Olá! Quero marcar minha primeira consulta." href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Marcar primeira consulta</a>
         <a class="btn ghost" href="#imc">Calcular meu IMC</a>
       </div>
     </div>
     <div class="portrait" role="img" aria-label="Ilustração de uma tigela com frutas e folhas">
-      <svg viewBox="0 0 200 200" aria-hidden="true">
-        <circle cx="100" cy="100" r="80" fill="#ffffff" opacity=".22"/>
-        <path d="M30 105h140a70 70 0 0 1-140 0z" fill="#ffffff"/>
-        <circle cx="78" cy="92" r="22" fill="#e8553f"/>
-        <circle cx="116" cy="88" r="20" fill="#f4b73f"/>
-        <circle cx="98" cy="74" r="18" fill="#7ac47f"/>
-        <path d="M128 70c14-4 24 2 28 12-14 4-24-2-28-12z" fill="#2f6b4f"/>
-        <path d="M60 72c-14-2-22 6-24 16 14 2 22-6 24-16z" fill="#2f6b4f"/>
-      </svg>
+      <div id="hero-bowl" style="display:contents"></div>
       <div class="badge"><b>Plano feito para a sua rotina</b>Sem lista proibida, com troca de alimentos.</div>
     </div>
   </header>
@@ -108,20 +152,22 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   <section id="como">
     <div class="kicker">Como funciona</div>
     <h2>Do primeiro contato ao resultado</h2>
+    <div class="fruits" aria-hidden="true" data-f="morango,laranja,abacaxi,abacate,banana,cereja"></div>
     <ol class="steps">
-      <li><h3>Consulta inicial</h3><p>Conversamos sobre histórico, rotina, preferências e objetivos. Avaliação com bioimpedância.</p></li>
-      <li><h3>Plano personalizado</h3><p>Você recebe o plano em até 5 dias, com cardápios, lista de compras e opções de troca.</p></li>
-      <li><h3>Retorno e ajustes</h3><p>Voltamos em 30 dias para acompanhar a evolução e ajustar o que for preciso.</p></li>
+      <li data-mascot="morango"><h3>Consulta inicial</h3><p>Conversamos sobre histórico, rotina, preferências e objetivos. Avaliação com bioimpedância.</p></li>
+      <li data-mascot="laranja"><h3>Plano personalizado</h3><p>Você recebe o plano em até 5 dias, com cardápios, lista de compras e opções de troca.</p></li>
+      <li data-mascot="abacate"><h3>Retorno e ajustes</h3><p>Voltamos em 30 dias para acompanhar a evolução e ajustar o que for preciso.</p></li>
     </ol>
   </section>
 
   <section id="planos">
     <div class="kicker">Planos</div>
     <h2>Escolha o acompanhamento ideal</h2>
+    <div class="fruits" aria-hidden="true" data-f="melancia,mirtilo,limao,morango,abacaxi,laranja"></div>
     <div class="plans">
-      <div class="plan"><h3>Consulta avulsa</h3><div class="price">R$ 220</div><ul><li>Avaliação completa</li><li>Plano alimentar</li><li>Retorno em 30 dias incluso</li></ul><a class="btn ghost" href="https://wa.me/5511900000000" target="_blank" rel="noopener">Agendar</a></div>
-      <div class="plan feat"><h3>Acompanhamento trimestral</h3><div class="price">R$ 540 <small>ou 3x de R$ 180</small></div><ul><li>3 consultas em 90 dias</li><li>Ajustes no plano a cada retorno</li><li>Suporte pelo WhatsApp</li></ul><a class="btn" href="https://wa.me/5511900000000" target="_blank" rel="noopener">Quero este</a></div>
-      <div class="plan"><h3>Consulta online</h3><div class="price">R$ 190</div><ul><li>Videochamada de 50 minutos</li><li>Plano enviado em PDF</li><li>Atende todo o Brasil</li></ul><a class="btn ghost" href="https://wa.me/5511900000000" target="_blank" rel="noopener">Agendar</a></div>
+      <div data-mascot="maca" class="plan"><h3>Consulta avulsa</h3><div class="price">R$ 220</div><ul><li>Avaliação completa</li><li>Plano alimentar</li><li>Retorno em 30 dias incluso</li></ul><a class="wa sm" data-wa data-msg="Olá! Quero agendar a consulta avulsa." href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar</a></div>
+      <div data-mascot="melancia" class="plan feat"><h3>Acompanhamento trimestral</h3><div class="price">R$ 540 <small>ou 3x de R$ 180</small></div><ul><li>3 consultas em 90 dias</li><li>Ajustes no plano a cada retorno</li><li>Suporte pelo WhatsApp</li></ul><a class="wa sm pulse" data-wa data-msg="Olá! Quero o acompanhamento trimestral." href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quero este</a></div>
+      <div data-mascot="banana" class="plan"><h3>Consulta online</h3><div class="price">R$ 190</div><ul><li>Videochamada de 50 minutos</li><li>Plano enviado em PDF</li><li>Atende todo o Brasil</li></ul><a class="wa sm" data-wa data-msg="Olá! Quero agendar a consulta online." href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar</a></div>
     </div>
   </section>
 
@@ -130,6 +176,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
       <div>
         <div class="kicker">Ferramenta gratuita</div>
         <h2>Calculadora de IMC</h2>
+        <div class="fruits" aria-hidden="true" data-f="maca,cereja,banana,limao"></div>
         <p>O IMC é só um ponto de partida. Ele não mede gordura nem massa muscular. Na consulta eu avalio o seu caso completo.</p>
       </div>
       <form id="f" novalidate>
@@ -145,6 +192,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   <section>
     <div class="kicker">Depoimentos</div>
     <h2>Quem já passou por aqui</h2>
+    <div class="fruits" aria-hidden="true" data-f="abacate,melancia,maca,abacaxi,morango,mirtilo"></div>
     <div class="quotes">
       <figure class="quote"><p>Nunca me senti tão bem com a minha alimentação. O plano coube na minha rotina de plantão.</p><cite>Camila, enfermeira</cite></figure>
       <figure class="quote"><p>Perdi 8 kg em 4 meses comendo comida de verdade, sem passar fome.</p><cite>Ricardo, 41 anos</cite></figure>
@@ -157,6 +205,51 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
 <script>
 (function(){
+  // Troque o número aqui (55 + DDD + número, só dígitos).
+  var PHONE='5511947861810';
+  document.querySelectorAll('[data-wa]').forEach(function(a){a.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(a.getAttribute('data-msg')||'Olá! Quero agendar uma consulta.')});
+
+  // ---- frutinhas fofas desenhadas em código ----
+  var INK='#3b2a2a';
+  function face(x,y,k){k=k||1;return '<g transform="translate('+x+' '+y+') scale('+k+')"><g class="eyes"><circle cx="-9" cy="0" r="3.4" fill="'+INK+'"/><circle cx="9" cy="0" r="3.4" fill="'+INK+'"/><circle cx="-8" cy="-1.2" r="1.1" fill="#fff"/><circle cx="10" cy="-1.2" r="1.1" fill="#fff"/></g><ellipse cx="-16" cy="7" rx="5" ry="3.2" fill="#ff8fa3" opacity=".6"/><ellipse cx="16" cy="7" rx="5" ry="3.2" fill="#ff8fa3" opacity=".6"/><path d="M-4.5 5Q0 10.5 4.5 5" fill="none" stroke="'+INK+'" stroke-width="2.4" stroke-linecap="round"/></g>'}
+  var S='stroke="#26305c" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"';
+  var LEAF='fill="url(#g-lf)" '+S;
+  function shine(d){return '<path d="'+d+'" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75"/>'}
+  var F={
+    morango:function(){return '<path d="M50 92C20 76 8 50 17 33c7-12 25-13 33-5 8-8 26-7 33 5 9 17-3 43-33 59Z" fill="url(#g-mo)" '+S+'/><g fill="#ffe08a"><ellipse cx="29" cy="44" rx="2" ry="3"/><ellipse cx="71" cy="44" rx="2" ry="3"/><ellipse cx="37" cy="74" rx="2" ry="3"/><ellipse cx="63" cy="74" rx="2" ry="3"/><ellipse cx="50" cy="84" rx="2" ry="3"/></g>'+shine('M24 40c1-5 4-8 9-9')+'<path d="M32 26l9 3 9-9 9 9 9-3-6 12-12-3-12 3z" '+LEAF+'/>'+face(50,58)},
+    laranja:function(){return '<circle cx="50" cy="58" r="35" fill="url(#g-lj)" '+S+'/>'+shine('M26 46a28 28 0 0 1 16-14')+'<path d="M50 24c2-10 13-14 22-10-1 10-10 15-22 10Z" '+LEAF+'/><rect x="48" y="19" width="4.5" height="9" rx="2" fill="#7a4a1c" '+S+'/>'+face(50,62)},
+    abacate:function(){return '<path d="M50 8C37 8 31 27 25 46c-8 25 6 46 25 46s33-21 25-46C69 27 63 8 50 8Z" fill="url(#g-av)" '+S+'/><path d="M50 19C42 19 37 33 32 49c-6 19 5 34 18 34s24-15 18-34C63 33 58 19 50 19Z" fill="#eaf6b0" stroke="#26305c" stroke-width="2.4"/><circle cx="50" cy="64" r="15" fill="url(#g-pit)" '+S+'/>'+shine('M42 57a9 9 0 0 1 6-5')+face(50,66,.78)},
+    banana:function(){return '<path d="M22 30C22 66 46 84 84 76" fill="none" stroke="#26305c" stroke-width="32" stroke-linecap="round"/><path d="M22 30C22 66 46 84 84 76" fill="none" stroke="url(#g-ba)" stroke-width="25" stroke-linecap="round"/><path d="M24 34C26 50 33 61 44 68" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/><rect x="15" y="12" width="13" height="12" rx="4" fill="#8a5a2a" '+S+'/>'+face(54,68,.8)},
+    melancia:function(){return '<path d="M5 38a45 45 0 0 0 90 0Z" fill="#3fae52" '+S+'/><path d="M11 38a39 39 0 0 0 78 0Z" fill="#f2f8c8"/><path d="M15 38a35 35 0 0 0 70 0Z" fill="url(#g-me)"/><g fill="#26305c"><ellipse cx="29" cy="52" rx="2" ry="3.6" transform="rotate(-20 29 52)"/><ellipse cx="71" cy="52" rx="2" ry="3.6" transform="rotate(20 71 52)"/><ellipse cx="39" cy="68" rx="2" ry="3.6"/><ellipse cx="61" cy="68" rx="2" ry="3.6"/></g>'+face(50,56)},
+    maca:function(){return '<path d="M50 30C34 20 14 30 16 54c2 24 18 40 34 36 16 4 32-12 34-36 2-24-18-34-34-24Z" fill="url(#g-ma)" '+S+'/>'+shine('M25 46c1-7 6-12 13-13')+'<rect x="47.5" y="13" width="5.5" height="17" rx="2.7" fill="#8a5a2a" '+S+'/><path d="M53 22c4-9 15-11 21-6-3 9-12 12-21 6Z" '+LEAF+'/>'+face(50,62)},
+    mirtilo:function(){return '<circle cx="50" cy="58" r="33" fill="url(#g-mi)" '+S+'/>'+shine('M28 48a24 24 0 0 1 14-13')+'<path d="M50 38l-7-9 7-6 7 6z" fill="#3a44a8" '+S+'/>'+face(50,63)},
+    abacaxi:function(){return '<path d="M50 40C36 26 30 20 24 12c10 2 16 6 22 14C44 14 46 6 50 2c4 4 6 12 4 24 6-8 12-12 22-14-6 8-12 14-26 28Z" '+LEAF+'/><ellipse cx="50" cy="64" rx="25" ry="29" fill="url(#g-ab)" '+S+'/><g clip-path="url(#c-ab)" stroke="#26305c" stroke-width="1.6" opacity=".35"><path d="M20 40l60 50M20 55l50 40M30 36l60 50M42 36l40 40M20 75l30 25M20 30l60 62M58 36l30 30M80 36l-60 60M80 52l-48 44M80 68l-36 28M66 36L24 80M52 36L22 66"/></g>'+shine('M32 50c0-5 3-9 7-11')+face(50,66)},
+    cereja:function(){return '<path d="M32 66C34 40 42 24 60 12M68 68C66 44 62 26 60 12" fill="none" stroke="#26305c" stroke-width="3.4" stroke-linecap="round"/><path d="M60 12c8-8 20-8 28-2-6 10-20 12-28 2Z" '+LEAF+'/><circle cx="30" cy="70" r="18" fill="url(#g-ch)" '+S+'/><circle cx="70" cy="72" r="18" fill="url(#g-ch)" '+S+'/>'+shine('M20 64a10 10 0 0 1 6-7')+shine('M60 66a10 10 0 0 1 6-7')+face(30,74,.5)+face(70,76,.5)},
+    limao:function(){return '<g transform="rotate(-22 50 58)"><ellipse cx="50" cy="58" rx="37" ry="27" fill="url(#g-li)" '+S+'/><circle cx="13" cy="58" r="5" fill="#f4c61a" '+S+'/><circle cx="87" cy="58" r="5" fill="#f4c61a" '+S+'/></g>'+shine('M26 48a24 20 0 0 1 14-10')+'<path d="M56 30c1-9 10-14 19-11-1 9-9 14-19 11Z" '+LEAF+'/>'+face(50,62)}
+  };
+  var COL={morango:'#ffc4d6',laranja:'#ffe07a',abacate:'#b7ecc7',banana:'#a8def8',melancia:'#ffd0b8',maca:'#ffc9d0',mirtilo:'#cfd3ff',abacaxi:'#d9c6ff',cereja:'#ffc9d9',limao:'#c9f0a8'};
+  function fruit(k){return '<svg viewBox="0 0 100 100" role="img" aria-label="Frutinha"><g class="b">'+F[k]()+'</g></svg>'}
+  document.querySelectorAll('.fruits').forEach(function(box,bi){
+    box.innerHTML='';
+    box.getAttribute('data-f').split(',').forEach(function(k,i){
+      var d=document.createElement('div');d.className='fr';d.style.setProperty('--c',COL[k]);d.style.setProperty('--d',(-(i*.55+bi*.2)).toFixed(2)+'s');d.innerHTML=fruit(k);box.appendChild(d);
+    });
+  });
+  document.querySelectorAll('[data-mascot]').forEach(function(c,i){
+    var d=document.createElement('div');d.className='fr mascot';d.style.setProperty('--c',COL[c.getAttribute('data-mascot')]);d.style.setProperty('--d',(-i*.7)+'s');d.innerHTML=fruit(c.getAttribute('data-mascot'));c.appendChild(d);
+  });
+
+  // tigela fofa no topo
+  function put(k,x,y,w,d){return '<g class="fl" style="--d:'+d+'s"><g class="b"><svg x="'+x+'" y="'+y+'" width="'+w+'" height="'+w+'" viewBox="0 0 100 100" overflow="visible">'+F[k]()+'</svg></g></g>'}
+  function star(x,y,r,d,c){return '<g class="tw" style="--d:'+d+'s"><path d="M'+x+' '+(y-r)+'Q'+x+' '+y+' '+(x+r)+' '+y+'Q'+x+' '+y+' '+x+' '+(y+r)+'Q'+x+' '+y+' '+(x-r)+' '+y+'Q'+x+' '+y+' '+x+' '+(y-r)+'Z" fill="'+(c||'#fff')+'"/></g>'}
+  document.getElementById('hero-bowl').outerHTML='<svg class="hero-art" viewBox="0 0 300 300" role="img" aria-label="Tigela de frutas fofas">'+
+    put('abacate',20,58,106,-.4)+put('morango',172,48,110,-1.4)+put('laranja',92,16,114,-.9)+put('melancia',104,100,84,-2)+
+    '<path d="M30 172h240c0 52-42 92-120 92S30 224 30 172Z" fill="#fff"/><path d="M30 172h240c-1 10-3 19-7 27H37c-4-8-6-17-7-27Z" fill="#fde0d0"/><ellipse cx="150" cy="172" rx="120" ry="12" fill="#fff"/><ellipse cx="150" cy="172" rx="120" ry="12" fill="none" stroke="#f4a889" stroke-width="3"/>'+
+    '<g transform="translate(150 226)"><g class="eyes"><circle cx="-14" cy="0" r="4.4" fill="'+INK+'"/><circle cx="14" cy="0" r="4.4" fill="'+INK+'"/></g><ellipse cx="-27" cy="9" rx="7" ry="4.2" fill="#ff8fa3" opacity=".6"/><ellipse cx="27" cy="9" rx="7" ry="4.2" fill="#ff8fa3" opacity=".6"/><path d="M-7 7Q0 15 7 7" fill="none" stroke="'+INK+'" stroke-width="3" stroke-linecap="round"/></g>'+
+    star(36,40,9,-.2)+star(262,92,7,-1.1)+star(250,24,6,-.7,'#ffe27a')+star(56,128,5,-1.6,'#ffe27a')+
+    '</svg>';
+
+  // calculadora de IMC (sem alterações)
   var p=document.getElementById('peso'),a=document.getElementById('alt'),r=document.getElementById('res');
   function faixa(v){return v<18.5?'Abaixo do peso':v<25?'Peso adequado':v<30?'Sobrepeso':'Obesidade'}
   function calc(){
