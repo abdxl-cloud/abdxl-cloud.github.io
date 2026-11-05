@@ -144,7 +144,34 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
 .dock .btn{box-shadow:0 12px 30px -10px rgba(0,0,0,.8)}
 .dock .btn.ghost{display:none;background:var(--panel2)}
 
+/* simulador ao vivo */
+.live{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center}
+.live-form{display:grid;gap:12px;min-width:0}
+.live-form label{font:600 .95rem/1.2 var(--sans)}
+.live-form input{width:100%;min-height:56px;padding:0 16px;border-radius:12px;border:1px solid #2c4170;background:var(--panel);color:var(--fg);font:600 1.1rem/1 var(--sans)}
+.live-form input:focus{outline:2px solid var(--accent);outline-offset:2px}
+.types{display:flex;flex-wrap:wrap;gap:8px}
+.types button{font:600 .92rem/1 var(--sans);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer}
+.types button[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
+.live-form .note{margin:0;color:var(--muted);font-size:.86rem}
+.phone{width:100%;max-width:300px;justify-self:center;border:7px solid #1b2a47;border-radius:36px;background:#000;box-shadow:0 30px 60px -30px rgba(91,156,255,.35);overflow:hidden}
+.screen{height:470px;overflow:hidden;background:var(--sb);color:var(--sf);transition:background .4s,color .4s;font-family:var(--sans);display:flex;flex-direction:column}
+.screen .nb{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 16px;font:800 1rem/1 var(--sans);letter-spacing:-.01em}
+.screen .nb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.screen .nb i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--sa)}
+.screen .hr{padding:14px 16px 6px}
+.screen .hr h4{margin:0 0 8px;font:800 1.7rem/1.05 var(--sans);letter-spacing:-.03em;overflow-wrap:anywhere}
+.screen .hr p{margin:0 0 14px;opacity:.75;font-size:.9rem;line-height:1.4}
+.screen .go{display:block;text-align:center;background:var(--sa);color:var(--si);border-radius:10px;padding:13px;font:700 .92rem/1 var(--sans)}
+.screen ul{list-style:none;margin:14px 16px 0;padding:0;display:grid;gap:8px}
+.screen li{display:flex;justify-content:space-between;gap:8px;padding:11px 12px;border-radius:10px;background:rgba(127,127,127,.14);font-size:.84rem;font-weight:600}
+.screen .ft{margin:auto 16px 14px;padding-top:10px;border-top:1px solid rgba(127,127,127,.3);font-size:.76rem;opacity:.75;display:grid;gap:3px}
+.screen.pop .hr h4{animation:pop .35s}
+@keyframes pop{from{transform:translateY(6px);opacity:.3}to{transform:none;opacity:1}}
+
 @media(max-width:760px){
+  .live{grid-template-columns:1fr;gap:26px}
+  .live-form .btn{width:100%}
   body{font-size:17px}
   header.top{position:static}
   html{scroll-padding-top:16px}
@@ -224,6 +251,36 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
       </aside>
     </div>
   </div>
+
+  <section id="seu-site">
+    <div class="mono"><b>→</b> experimente agora</div>
+    <h2>Digite o nome do seu negócio e veja o seu site na hora</h2>
+    <div class="live">
+      <div class="live-form">
+        <label for="lv-name">Nome do seu negócio</label>
+        <input id="lv-name" type="text" maxlength="28" placeholder="Ex.: Barbearia do Zé" autocomplete="off">
+        <div class="mono">Tipo de negócio</div>
+        <div class="types" role="group" aria-label="Tipo de negócio">
+          <button type="button" data-t="barbearia" aria-pressed="true">Barbearia</button>
+          <button type="button" data-t="pizzaria" aria-pressed="false">Pizzaria</button>
+          <button type="button" data-t="oficina" aria-pressed="false">Oficina</button>
+          <button type="button" data-t="saude" aria-pressed="false">Saúde</button>
+          <button type="button" data-t="salao" aria-pressed="false">Salão</button>
+          <button type="button" data-t="loja" aria-pressed="false">Loja</button>
+        </div>
+        <a class="btn wa" id="lv-cta" href="https://wa.me/5511947861810" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quero um site assim</a>
+        <p class="note">Prévia ilustrativa. O site final é feito com as suas cores, fotos e informações.</p>
+      </div>
+      <div class="phone" aria-live="polite">
+        <div class="screen" id="lv-screen">
+          <div class="nb"><span id="lv-n1">Seu Negócio</span><i></i></div>
+          <div class="hr"><h4 id="lv-n2">Seu Negócio</h4><p id="lv-tag"></p><span class="go" id="lv-go"></span></div>
+          <ul id="lv-list"></ul>
+          <div class="ft"><span id="lv-hours"></span><span>São Bernardo do Campo · SP</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="trabalhos">
     <div class="mono"><b>01</b> trabalhos</div>
@@ -453,6 +510,55 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
       });
     });
   });
+
+  // Simulador: o visitante digita o nome e vê o site dele
+  var TH={
+    barbearia:{b:'#14110f',f:'#f3ead8',a:'#c9a24b',i:'#14110f',tag:'Corte e barba com hora marcada.',go:'Agendar no WhatsApp',l:[['Corte','R$ 45'],['Barba','R$ 35'],['Corte + barba','R$ 70']],h:'Seg a sáb · 9h às 20h',ex:'Barbearia do Zé'},
+    pizzaria:{b:'#ffd23f',f:'#1b1208',a:'#e63b2e',i:'#ffffff',tag:'Pizza quentinha na sua porta.',go:'Pedir no WhatsApp',l:[['Marguerita','R$ 54'],['Calabresa','R$ 52'],['Quatro queijos','R$ 62']],h:'Ter a dom · 18h às 23h30',ex:'Pizzaria Dona Rosa'},
+    oficina:{b:'#e6e9eb',f:'#0d1b24',a:'#ff5a1f',i:'#ffffff',tag:'Orçamento rápido para o seu carro.',go:'Pedir orçamento',l:[['Revisão completa','Sob consulta'],['Freios e suspensão','Sob consulta'],['Troca de óleo','R$ 120']],h:'Seg a sex · 8h às 18h',ex:'Auto Center Silva'},
+    saude:{b:'#f3f7f2',f:'#14261d',a:'#2f6b4f',i:'#ffffff',tag:'Agende a sua consulta.',go:'Agendar consulta',l:[['Primeira consulta','R$ 250'],['Retorno','R$ 150'],['Plano mensal','R$ 480']],h:'Seg a sex · 8h às 17h',ex:'Clínica Bem Viver'},
+    salao:{b:'#1a1320',f:'#f6e9f0',a:'#e86fa7',i:'#1a1320',tag:'Beleza com hora marcada.',go:'Agendar horário',l:[['Corte e escova','R$ 90'],['Manicure e pedicure','R$ 60'],['Coloração','R$ 180']],h:'Ter a sáb · 9h às 19h',ex:'Studio Bella'},
+    loja:{b:'#0e1a33',f:'#e8eefc',a:'#5b9cff',i:'#04122e',tag:'Fale com a gente pelo WhatsApp.',go:'Chamar no WhatsApp',l:[['Nossos produtos','Ver'],['Como chegar','Mapa'],['Horário','Seg a sáb']],h:'Seg a sáb · 9h às 18h',ex:'Casa & Cia'}
+  };
+  var lvName=document.getElementById('lv-name'),lvScreen=document.getElementById('lv-screen'),lvCta=document.getElementById('lv-cta');
+  var lvBtns=document.querySelectorAll('.types button'),lvType='barbearia',lvTimer=null,popT=null;
+  function lvRender(name){
+    var t=TH[lvType],n=(name||'').trim()||'Seu Negócio';
+    var s=lvScreen.style;
+    s.setProperty('--sb',t.b);s.setProperty('--sf',t.f);s.setProperty('--sa',t.a);s.setProperty('--si',t.i);
+    document.getElementById('lv-n1').textContent=n;
+    document.getElementById('lv-n2').textContent=n;
+    document.getElementById('lv-tag').textContent=t.tag;
+    document.getElementById('lv-go').textContent=t.go;
+    document.getElementById('lv-hours').textContent=t.h;
+    var ul=document.getElementById('lv-list');ul.innerHTML='';
+    t.l.forEach(function(r){var li=document.createElement('li'),a=document.createElement('span'),b=document.createElement('span');a.textContent=r[0];b.textContent=r[1];li.appendChild(a);li.appendChild(b);ul.appendChild(li)});
+    var real=lvName.value.trim();
+    var m=real?'Olá! Vi o site da Nodo e quero um site assim para "'+real+'".':MSG;
+    lvCta.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(m);
+    lvScreen.classList.remove('pop');void lvScreen.offsetWidth;lvScreen.classList.add('pop');
+  }
+  function lvSetType(k){
+    lvType=k;
+    lvBtns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-t')===k?'true':'false')});
+  }
+  function lvStop(){if(lvTimer){clearInterval(lvTimer);lvTimer=null}}
+  lvName.addEventListener('input',function(){lvStop();lvRender(lvName.value)});
+  lvName.addEventListener('focus',lvStop);
+  lvBtns.forEach(function(b){b.addEventListener('click',function(){lvStop();lvSetType(b.getAttribute('data-t'));lvRender(lvName.value)})});
+  lvRender('');
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    // demonstração automática: escreve exemplos até o visitante mexer
+    var keys=Object.keys(TH),ki=0,ci=0,hold=0;
+    lvSetType(keys[0]);
+    lvTimer=setInterval(function(){
+      var ex=TH[keys[ki]].ex;
+      if(hold>0){hold--;return}
+      if(ci<=ex.length){lvRender(ex.slice(0,ci));ci++;if(ci>ex.length)hold=14}
+      else{ki=(ki+1)%keys.length;ci=0;lvSetType(keys[ki])}
+    },90);
+    document.getElementById('seu-site').addEventListener('pointerdown',lvStop);
+  }
 
   route(true);
 })();
