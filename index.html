@@ -192,10 +192,59 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
   footer{padding-bottom:36px}
 }
 @media(min-width:761px){
-  .rail{overflow:visible;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+  .rail{overflow:visible;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr)}
   .work{flex:initial;max-width:none}
   html{scroll-padding-top:90px}
 }
+
+/* celular interativo */
+.fb{display:grid;grid-template-columns:1fr minmax(260px,330px);gap:40px 56px;align-items:center}
+.fb h2{margin-bottom:12px}
+.fb p{color:var(--muted);max-width:46ch;margin:0 0 18px}
+.fb .hint{font:500 .8rem/1.4 var(--mono);color:var(--accent);display:flex;gap:8px;align-items:center}
+.fb .hint i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(91,156,255,.6);animation:hp 2s infinite}
+@keyframes hp{70%{box-shadow:0 0 0 10px rgba(91,156,255,0)}100%{box-shadow:0 0 0 0 rgba(91,156,255,0)}}
+.fb .hint .t{display:none}
+.phcol{position:relative;display:grid;place-items:center;min-height:680px}
+.phcol::before{content:"";position:absolute;inset:8% -10%;background:radial-gradient(closest-side,rgba(91,156,255,.22),transparent 72%);pointer-events:none}
+.ph3d{position:relative;width:min(100%,280px);aspect-ratio:616/814;cursor:pointer;outline-offset:14px;-webkit-tap-highlight-color:transparent;touch-action:pan-y;--k:.4545;--ease:cubic-bezier(.45,.02,.15,1);--dur:1.3s;--m0:matrix3d(0.851712,1.33075e-18,0,1.09194e-19,-0.0429384,0.488952,0,-0.000138556,0,0,1,0,46.8833,1.20648,0,1);--m1:matrix3d(1.15121,0,0,0,0,1.15121,0,0,0,0,1,0,-43.12,-333.23,0,1)}
+.ph3d .fit{position:absolute;left:0;top:0;width:616px;height:814px;transform-origin:0 0;transform:scale(var(--k))}
+.ph3d .ground{position:absolute;left:62px;right:62px;bottom:-30px;height:48px;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);filter:blur(14px);transform-origin:50% 50%;transition:transform var(--dur) var(--ease),opacity .6s;opacity:.8}
+.ph3d .tilt{position:absolute;left:0;top:0;width:616px;height:814px;max-width:none;display:block;user-select:none;-webkit-user-drag:none;opacity:1;z-index:3;transition:opacity .16s linear 1.12s}
+.ph3d .upwrap{position:absolute;left:0;top:0;width:610px;height:1286px;transform-origin:0 0;transform:var(--m0);transition:transform var(--dur) var(--ease);z-index:2;pointer-events:none;will-change:transform}
+.ph3d .up{position:absolute;left:0;top:0;width:610px;height:1286px;max-width:none;display:block;user-select:none;-webkit-user-drag:none;z-index:2;opacity:0;transition:opacity .16s linear 1.12s}
+.ph3d .screen{position:absolute;left:25px;top:19px;width:562px;height:1248px;overflow:hidden;border-radius:72px;background:#0b141a;z-index:1;opacity:0;transition:opacity .16s linear 1.12s}
+.ph3d .rim{position:absolute;left:6px;top:1px;width:597px;height:1283px;border-radius:112px;z-index:0;opacity:0;pointer-events:none;box-shadow:0 0 0 3px #f1e8f6,0 0 0 8px #cdbcdc,0 0 0 13px #9b86b2,0 0 0 15px #6f5c86;transition:opacity .16s linear 1.12s}
+.ph3d.on .rim{opacity:1;transition:opacity .12s linear 0s}
+.splash{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:3;pointer-events:none;opacity:1;transform:scale(1);transition:opacity .8s ease .2s,transform 1.2s var(--ease) .2s}
+.ph3d.on .tilt{opacity:0;transition:opacity .12s linear 0s}
+.ph3d.on .upwrap{transform:var(--m1)}
+.ph3d.on .up,.ph3d.on .screen{opacity:1;transition:opacity .12s linear 0s}
+.ph3d.on .splash{opacity:0;transform:scale(1.07);transition:opacity 1.1s cubic-bezier(.4,0,.2,1) .45s,transform 1.7s cubic-bezier(.2,.7,.2,1) .45s}
+.ph3d.on .ground{transform:scale(1.3,1.1);opacity:.95}
+.track{display:flex;height:100%;transition:transform .55s cubic-bezier(.3,.8,.2,1);touch-action:pan-y}
+.slide{flex:none;width:100%;height:100%;position:relative;background:#0b141a}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.slide.ex{display:flex;flex-direction:column;background:#0b141a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='8' cy='8' r='1.2' fill='%23ffffff' fill-opacity='.05'/%3E%3C/svg%3E")}
+.slide.ex .wh{height:11%;background:#1f2c34;display:flex;align-items:flex-end;gap:18px;padding:0 6% 14px;color:#e9edef;font:600 30px/1 var(--sans)}
+.slide.ex .wh span{width:56px;height:56px;border-radius:50%;background:#2a3942}
+.slide.ex .bd{flex:1;display:grid;place-content:center;gap:10px;padding:0 9%;text-align:center}
+.slide.ex .bb{background:#005c4b;color:#e9edef;border-radius:26px 26px 4px 26px;padding:26px 30px;font:500 32px/1.4 var(--sans);text-align:left;justify-self:end;max-width:92%}
+.slide.ex .bb small{display:block;margin-top:12px;color:#8fb3a8;font:500 24px/1.3 var(--mono)}
+.dots{position:absolute;left:0;right:0;bottom:3.4%;display:flex;justify-content:center;gap:14px;z-index:4;pointer-events:none;opacity:0;transition:opacity .4s .6s}
+.ph3d.on .dots{opacity:1;pointer-events:auto}
+.dots button{width:14px;height:14px;padding:0;border:0;border-radius:7px;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s,background .3s}
+.dots button[aria-current="true"]{width:40px;background:#fff}
+.xbtn{position:absolute;top:-2px;right:-6px;z-index:6;width:40px;height:40px;border-radius:50%;border:1px solid #2c4170;background:var(--panel2);color:var(--fg);font:500 1.2rem/1 var(--mono);display:none;cursor:pointer}
+@media(max-width:760px){
+  .fb{grid-template-columns:1fr}
+  .phcol{min-height:560px}
+  .ph3d{width:min(70%,230px)}
+  .fb .hint .d{display:none}.fb .hint .t{display:inline}
+  .ph3d.on .xbtn,.phcol.on .xbtn{display:block}
+}
+@media(hover:none){.ph3d.on~.xbtn{display:block}}
+@media(prefers-reduced-motion:reduce){.ph3d .rim,.ph3d .upwrap,.ph3d .tilt,.ph3d .up,.ph3d .screen,.ph3d .splash,.ph3d .ground{transition-duration:.01ms!important;transition-delay:0s!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -300,8 +349,37 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
         <div class="shot" style="--b:#f3f7f2;--a:#2f6b4f;--c:#f4a889"><div class="h"></div><div class="h2"></div><div class="l" style="background:rgba(20,38,29,.3)"></div><div class="l s" style="background:rgba(20,38,29,.3)"></div><div class="k"></div></div>
         <div class="info"><b>Nutricionista</b><span>Planos de consulta e calculadora de IMC</span><em>Ver site →</em></div>
       </a>
+      <a class="work" href="portfolio/flor-de-acucar/">
+        <div class="shot" style="--b:#f4c9d0;--a:#7a1f35;--c:#fcf4ee"><div class="h"></div><div class="h2"></div><div class="l" style="background:rgba(122,31,53,.35)"></div><div class="l s" style="background:rgba(122,31,53,.35)"></div><div class="k"></div></div>
+        <div class="info"><b>Confeitaria</b><span>Cardápio e monte sua caixa de docinhos</span><em>Ver site →</em></div>
+      </a>
     </div>
     <div class="more"><a class="btn ghost" href="#portfolio">Ver portfólio completo</a></div>
+  </section>
+
+  <section id="feedbacks">
+    <div class="fb">
+      <div>
+        <div class="mono"><b>→</b> feedbacks</div>
+        <h2>O que os clientes falam no WhatsApp</h2>
+        <p>Prints reais de conversas e avaliações. Deslize para ver mais.</p>
+        <div class="hint"><i></i><span class="d">Passe o mouse sobre o celular</span><span class="t">Toque no celular</span></div>
+      </div>
+      <div class="phcol" id="phcol">
+        <div class="ph3d" id="ph3d" role="button" tabindex="0" aria-expanded="false" aria-label="Celular com feedbacks de clientes. Ative para ver os prints.">
+          <div class="fit">
+            <div class="ground"></div>
+            <div class="upwrap">
+              <div class="rim"></div>
+              <div class="screen" id="phscreen"><div class="track" id="phtrack"></div><img class="splash" src="img/tela-nodo.jpg" alt="" decoding="async"><div class="dots" id="phdots"></div></div>
+              <img class="up" src="img/celular-em-pe.png" alt="" width="610" height="1286" decoding="async">
+            </div>
+            <img class="tilt" src="img/celular-inclinado.png" alt="" width="616" height="814" decoding="async">
+          </div>
+        </div>
+        <button class="xbtn" id="phclose" type="button" aria-label="Fechar celular">×</button>
+      </div>
+    </div>
   </section>
 
   <section id="servicos">
@@ -440,6 +518,19 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
         </div>
       </article>
 
+      <article class="case" data-cat="alimentacao">
+        <div class="shot big" style="--b:#f4c9d0;--a:#7a1f35;--c:#fcf4ee"><div class="h"></div><div class="h2"></div><div class="l" style="background:rgba(122,31,53,.35)"></div><div class="l s" style="background:rgba(122,31,53,.35)"></div><div class="k"></div></div>
+        <div class="body">
+          <div class="row"><span class="tag">Alimentação</span><span class="demo">demonstração</span></div>
+          <h3>Flor de Açúcar · Confeitaria</h3>
+          <dl>
+            <div><dt>Desafio</dt><dd>Mostrar produtos feitos à mão e facilitar encomendas de festa.</dd></div>
+            <div><dt>Entrega</dt><dd>Cardápio ilustrado e caixa de docinhos montada pelo cliente, com pedido pronto no WhatsApp.</dd></div>
+          </dl>
+          <a class="btn wa" href="portfolio/flor-de-acucar/">Abrir site</a>
+        </div>
+      </article>
+
       <article class="case you" data-cat="todos">
         <span class="tag">Próximo</span>
         <h3>O seu negócio pode estar aqui</h3>
@@ -488,6 +579,62 @@ footer{border-top:1px solid var(--line);padding:26px 0 120px;display:flex;justif
   function toggleDock(){dock.classList.toggle('on',window.scrollY>260||!vp.hidden)}
   window.addEventListener('hashchange',function(){route(false)});
   window.addEventListener('scroll',toggleDock,{passive:true});
+
+
+  // ---------- celular interativo de feedbacks ----------
+  (function(){
+    var box=document.getElementById('ph3d');if(!box)return;
+    var track=document.getElementById('phtrack'),dots=document.getElementById('phdots'),col=document.getElementById('phcol'),closeB=document.getElementById('phclose'),screen=document.getElementById('phscreen');
+    var n=0,cur=0,timer=null,open=false;
+    function fit(){box.style.setProperty('--k',(box.clientWidth/616).toFixed(5))}fit();if(window.ResizeObserver)new ResizeObserver(fit).observe(box);else addEventListener('resize',fit);
+    function addSlide(el){track.appendChild(el);n++}
+    function build(){
+      dots.innerHTML='';
+      for(var i=0;i<n;i++){(function(i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Feedback '+(i+1));b.addEventListener('click',function(e){e.stopPropagation();go(i,true)});dots.appendChild(b)})(i)}
+      go(0,false);
+    }
+    function go(i,user){cur=(i+n)%n;track.style.transform='translateX(-'+cur*100+'%)';[].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===cur?'true':'false')});if(user)restart()}
+    function stop(){clearInterval(timer);timer=null}
+    function restart(){stop();if(open&&n>1&&!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(function(){go(cur+1,false)},3800)}
+    function setOpen(v){open=v;box.classList.toggle('on',v);col.classList.toggle('on',v);box.setAttribute('aria-expanded',v);if(v){go(0,false);restart()}else stop()}
+    // prints reais: feedbacks/1.jpg, 2.jpg ... (até 8)
+    function load(k){
+      if(k>8){finish();return}
+      var exts=['jpg','png'],j=0;
+      (function tryNext(){
+        if(j>=exts.length){finish();return}
+        var im=new Image();im.alt='Feedback de cliente no WhatsApp';im.decoding='async';
+        im.onload=function(){var d=document.createElement('div');d.className='slide';d.appendChild(im);addSlide(d);load(k+1)};
+        im.onerror=function(){j++;tryNext()};
+        im.src='feedbacks/'+k+'.'+exts[j];
+      })();
+    }
+    function finish(){
+      if(!n){for(var i=0;i<3;i++){var d=document.createElement('div');d.className='slide ex';d.innerHTML='<div class="wh"><span></span>Cliente</div><div class="bd"><div class="bb">Seu print de feedback aparece aqui<small>Salve em feedbacks/'+(i+1)+'.jpg</small></div></div>';addSlide(d)}}
+      build();
+    }
+    load(1);
+    // interação: mouse = hover; toque/teclado = alternar
+    box.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')setOpen(true)});
+    box.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')setOpen(false)});
+    box.addEventListener('click',function(e){
+      if(e.pointerType==='mouse'||e.detail===0&&false){ // no desktop: clique avança
+        if(open){var r=screen.getBoundingClientRect();go(cur+(e.clientX>r.left+r.width/2?1:-1),true)}
+        return}
+      setOpen(!open);
+    });
+    box.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();setOpen(!open)}
+      else if(open&&e.key==='ArrowRight')go(cur+1,true);else if(open&&e.key==='ArrowLeft')go(cur-1,true);else if(e.key==='Escape')setOpen(false)});
+    box.addEventListener('focusout',function(e){if(!box.contains(e.relatedTarget)&&open&&!box.matches(':hover'))setOpen(false)});
+    closeB.addEventListener('click',function(){setOpen(false)});
+    // deslizar com o dedo
+    var sx=null;
+    screen.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')sx=e.clientX});
+    screen.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40){go(cur+(dx<0?1:-1),true);e.stopPropagation();box.__sw=Date.now()}});
+    box.addEventListener('click',function(e){if(box.__sw&&Date.now()-box.__sw<350){e.stopImmediatePropagation()}},true);
+    document.addEventListener('pointerdown',function(e){if(open&&e.pointerType!=='mouse'&&!col.contains(e.target))setOpen(false)});
+  })();
 
   var hero=document.getElementById('hero');
   hero.addEventListener('pointermove',function(e){
